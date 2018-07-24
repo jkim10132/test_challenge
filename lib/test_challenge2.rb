@@ -1,3 +1,3 @@
-def print_name
+def print_name2
   print "name"
 end
