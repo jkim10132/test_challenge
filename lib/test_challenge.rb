@@ -1,4 +1,4 @@
 def print_name
-  print "this string shouldn't pass"
+  print "name"
 end
 #Adding comment
