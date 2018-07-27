@@ -1,4 +1,4 @@
-require 'challenge_2'
+require_relative '../lib/challenge_2.rb'
 
 describe 'printing name' do
   it 'should print out name' do
