@@ -15,6 +15,7 @@ require 'pry'
       RSpec::Core::RakeTask.new(:spec) do |t|
         t.pattern = "#{folder}/spec/*.rb"
         t.rspec_opts = '--format json'
+        t.verbose = false
       end
       Rake::Task[:spec].execute
     end
