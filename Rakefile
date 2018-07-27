@@ -16,19 +16,18 @@ require 'net/http'
     folder_diffs.uniq.reject(&:empty?).each do |folder|
       RSpec::Core::RakeTask.new(:spec) do |t|
         t.pattern = "#{folder}/spec/*.rb"
-        t.rspec_opts = '--format json' + ' --out results.json'
+        t.rspec_opts = '--format json'
         t.verbose = false
       end
       Rake::Task[:spec].invoke
       Rake::Task[:spec].reenable
-      puts "hi"
       file = File.read('results.json')
-      uri = URI('https://localhost:3000/retrieve_jenkins_data')
+      uri = URI('http://localhost:3000/retrieve_challenge_data')
       req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-      req.body = JSON.parse(file)
-      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
-      http.request(req)
-end
+      req.body = JSON.parse(file).to_json
+      http = Net::HTTP.new(uri.host, uri.port)
+
+      res = http.request(req)
     end
   end
   task :default => :test_changes
