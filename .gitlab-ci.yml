@@ -1,0 +1,3 @@
+rspec:
+  script:
+    - rspec challenge_1/spec/test_spec.rb
