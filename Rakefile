@@ -13,6 +13,7 @@ require 'net/http'
     diff[:files].each do |file, data|
       folder_diffs << /^\w[^\/]*/.match(file).to_s
     end 
+    count = 0
     folder_diffs.uniq.reject(&:empty?).each do |folder|
       RSpec::Core::RakeTask.new(:spec) do |t|
         t.pattern = "#{folder}/spec/*.rb"
@@ -21,13 +22,12 @@ require 'net/http'
       end
       Rake::Task[:spec].invoke
       Rake::Task[:spec].reenable
-      file = File.read('results.json')
-      uri = URI('http://localhost:3000/retrieve_challenge_data')
-      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-      req.body = JSON.parse(file).to_json
-      http = Net::HTTP.new(uri.host, uri.port)
-
-      res = http.request(req)
     end
+    # file = File.read('results.json')
+    # uri = URI('http://localhost:3000/retrieve_challenge_data')
+    # req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+    # req.body = JSON.parse(file).to_json
+    # http = Net::HTTP.new(uri.host, uri.port)
+    # res = http.request(req)
   end
   task :default => :test_changes
