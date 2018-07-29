@@ -21,13 +21,13 @@ require 'net/http'
       end
       Rake::Task[:spec].invoke
       Rake::Task[:spec].reenable
-      # file = File.read('results.json')
-      # uri = URI('http://localhost:3000/retrieve_challenge_data')
-      # req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-      # req.body = JSON.parse(file).to_json
-      # http = Net::HTTP.new(uri.host, uri.port)
+      file = File.read('results.json')
+      uri = URI('http://localhost:3000/retrieve_challenge_data')
+      req = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+      req.body = JSON.parse(file).to_json
+      http = Net::HTTP.new(uri.host, uri.port)
 
-      # res = http.request(req)
+      res = http.request(req)
     end
   end
   task :default => :test_changes
