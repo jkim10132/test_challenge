@@ -1,3 +1,4 @@
 rspec:
   script:
+    - rake
     - rspec challenge_1/spec/test_spec.rb
