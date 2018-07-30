@@ -1,4 +1,4 @@
 def print_name
   #TODO: Print Name
-  print "fwf 2"
+  print "Challenge 2"
 end
