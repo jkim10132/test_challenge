@@ -1,4 +1,4 @@
 def print_name
   #TODO: Print Name
-  print "name"
+  print "test_change"
 end
