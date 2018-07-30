@@ -35,7 +35,6 @@ task :post do
   http = Net::HTTP.new(uri.host, uri.port)
   res = http.request(req)
 end
-binding.pry
 
 # Rake::Task["test_changes"].invoke
 # Rake::Task["test_changes"].reenable
