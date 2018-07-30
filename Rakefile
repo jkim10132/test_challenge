@@ -34,6 +34,7 @@ task :test_changes do
   end
   
 end
+    binding.pry
 
 
 task :default => [:test_changes]
