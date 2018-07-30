@@ -9,7 +9,7 @@ task :test_changes do
   commit = g.object('HEAD')
   diff = g.branches['origin/master'].gcommit
   committer = commit.author.email
-  diff = g.diff(commit,master).stats
+  diff = g.diff(commit,diff).stats
   folder_diffs = []
   diff[:files].each do |file, data|
     folder_diffs << /^\w[^\/]*/.match(file).to_s
